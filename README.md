@@ -77,9 +77,9 @@ data 目录用来保存数据文件，该目录下另有如下三个子目录：
 
 == 编译脚本使用说明 ==
 
-（是在 Linux 上编写该脚本，尚未在 Windows 上进行测试）
+（在 Windows 上编写该脚本，尚未在 Linux 上进行测试）
 
-如果你在 Windows 上使用碰到问题，可以到[https://lgqm.gq/] 留言进行反馈
+如果你在编译上使用碰到问题，可以到[https://lgqm.gq/] 留言进行反馈
 也可以在[https://github.com/eiauo/lgqm/issues] 本项目发一个 issue
 
 === 脚本的命令行参数 ===
