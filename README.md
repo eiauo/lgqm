@@ -26,9 +26,9 @@ GitHub 提供了“下载整个项目”的功能。
 
 想要参与的同学，可以通过如下方式：
 
-* 到[https://lgqm.gq/论坛]留言进行反馈，补充信息或反馈错误。
+* 到[https://lgqm.gq/] 论坛]留言进行反馈，补充信息或反馈错误。
 
-* 在[https://github.com/eiauo/lgqm/issues本项目发一个 issue]，补充信息或反馈错误。
+* 在[https://github.com/eiauo/lgqm/issues] 本项目发一个 issue补充信息或反馈错误。
 
 * Fork 该项目，进行修改，然后向发一个 Pull Request
 
@@ -37,7 +37,7 @@ GitHub 提供了“下载整个项目”的功能。
 
 == 数据格式说明 ==
 
-本项目的数据文件，全部采用[https://zh.wikipedia.org/wiki/YAML YAML 格式]。这种格式非常简洁明了，有利于完全不懂技术的网友参与编辑。
+本项目的数据文件，全部采用[https://zh.wikipedia.org/wiki/YAML] YAML 格式。这种格式非常简洁明了，有利于完全不懂技术的网友参与编辑。
 
 而且在每一个 YAML 格式的文件中都写了详细的注释，便于其他网友修改。
 
@@ -79,7 +79,8 @@ data 目录用来保存数据文件，该目录下另有如下三个子目录：
 
 （是在 Linux 上编写该脚本，尚未在 Windows 上进行测试）
 
-如果你在 Windows 上使用碰到问题，可以到[https://lgqm.gq/]留言进行反馈。也可以在[https://github.com/programthink/zhao/issues 本项目发一个 issue]。
+如果你在 Windows 上使用碰到问题，可以到[https://lgqm.gq/] 留言进行反馈
+也可以在[https://github.com/eiauo/lgqm/issues] 本项目发一个 issue
 
 === 脚本的命令行参数 ===
 
