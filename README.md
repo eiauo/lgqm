@@ -26,7 +26,7 @@ GitHub 提供了“下载整个项目”的功能。
 
 想要参与的同学，可以通过如下方式：
 
-* 到[https://lgqm.gq/] 论坛]留言进行反馈，补充信息或反馈错误。
+* 到[https://lgqm.gq/] 论坛留言进行反馈，补充信息或反馈错误。
 
 * 在[https://github.com/eiauo/lgqm/issues] 本项目发一个 issue补充信息或反馈错误。
 
