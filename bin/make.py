@@ -8,7 +8,7 @@ import re
 from io import StringIO
 import yaml
 from urllib.parse import quote, unquote, urlencode
-
+import traceback
 
 def _raise_err(format, *args) :
     raise ValueError(format % args)
@@ -30,7 +30,7 @@ class Node :
         Node.all = {}
         Node.keys = []
 
-        for node_type in ['person', 'company'] :
+        for node_type in ['person', 'person2', 'company'] :
             for node_id in os.listdir('../data/' + node_type) :
                 yaml_file = '../data/%s/%s/brief.yaml' % (node_type, node_id)
                 node = Node(_load_yaml(yaml_file), node_id, node_type)
@@ -189,6 +189,8 @@ digraph %s
         other_names = ''
         if 'person'==node.type and node.other_names :
             other_names = ', '.join(['%s:%s' % (k,v) for k,v in node.other_names.items()])
+        elif 'person2'==node.type and node.other_names :
+            other_names = ', '.join(['%s:%s' % (k,v) for k,v in node.other_names.items()])
         elif 'company'==node.type and node.full_name :
             other_names = node.full_name
         return '<tr><td>(%s)</td></tr>' % (other_names,) if other_names else ''
@@ -202,19 +204,22 @@ digraph %s
                     '<tr><td>%s</td></tr>' \
                     '<tr><td>%s</td></tr></table>>];\n'
 
-        portrait = '../data/person/%s/portrait.jpg' % (node_id,)
-        personpath = '../data/person/%s' % (node_id,)
+        portrait = '../data/'+node.type+'/%s/portrait.jpg' % (node_id,)
+        personpath = '../data/'+node.type+'/%s' % (node_id,)
         dotpath = '../download/dot/%s' % (node_id,)
 
         if os.path.exists((portrait)):
-            shutil.copytree(personpath, quote(dotpath)) 
+            try:
+                shutil.copytree(personpath, quote(dotpath)) 
+            except:
+                pass
             portrait = '<img src="%s/portrait.jpg"/>' % quote(dotpath,) 
         else:
             portrait = ''
             
 
         return template % (node.id,
-                           'box' if 'person'==node.type else 'ellipse',
+                           'box' if 'person'==node.type or 'person2'==node.type else 'ellipse',
                            self._node_color(node),
                            node.name,
                            ('' if node.birth=='N/A' else ' [%s]'%node.birth),
@@ -245,15 +250,15 @@ digraph %s
 
     def _dot_sub_graph(self, name) :
         node = Node.all[name]
-        if node.type == 'company' :
-            return self._dot_node(name)
+        #if node.type == 'company' :
+        #    return self._dot_node(name)
 
         family = Family.all[name]
         template = '''
 \tsubgraph "cluster_%s"
 \t{
 \t\tfontsize="18";
-\t\tlabel="%s家族";
+\t\tlabel="%s";
 \t\t%s;
 \t}
 '''
@@ -306,6 +311,8 @@ if '__main__' == __name__ :
 (file_type is pdf or jpg or png or gif or tiff or svg or ps)''' % sys.argv[0])
             sys.exit(0)
         sys.exit(Builder().do(sys.argv[1]))
-    except Exception as err :
-        print('Make abort!\n%s' % err)
+    except Exception as ex :
+        print('Make abort!\n%s' % ex)
+        #shutil.rmtree('./dot')
+        traceback.print_exc()
         sys.exit(1)
