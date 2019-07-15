@@ -155,7 +155,7 @@ class Graph :
             output.write(self._dot_relation(r))
         output.write('\n')
 
-        if len(self._families) > 1 :
+        if len(self._families) >= 1 :
             for f in self._families :
                 output.write(self._dot_sub_graph(f))
 
